@@ -2,6 +2,44 @@
 
 <div class="play-container">
 
+    <!-- EXAMPLE OF ONE WAY DATA BINDING. cLICK EVENTS GETS THE CLICK AND THE LOGIC IN THE PROPERTY RETURNS BACK THE BINDING BACK TO THE SCREEN -->
     <p> You've clicked <span (click)="countClick()">this</span> {{ clickCounter }} times.</p>
+
+</div>
+
+
+<div class="play-container">
+
+    <p>
+        <!-- TWO-WAY DATA BINDING && WE IMPORT THE FORMS MODULE IN THE APP.MODULE -->
+        <input type="text" [(ngModel)]="name">
+        <br>
+        <strong>You said:</strong> {{ name }}
+        <!--WE BIND THE DATA SO WE CAN SEE THE RESULT-->
+    </p>
+
+</div>
+
+<!-- NG TEMPLATE ALLOWS US TO BE ABLE TO WORK WITH IF AND ELSE STATEMENTS IN ANGULAR -->
+
+<!-- STYLE BINDING TO AN IF AND ELSE OR ANYTHING ELSE---- [style.background-color]="clickCounter > 4 ? 'lightcyan' : 'lightseagreen'" -->
+
+<!-- CHANGE MULTIPLE CSS STYLES AT ONCE AND NOT JUST ONE WE ADOPT NG-STYLE (STYLE BININD)-->
+<div class="play-container" [ngStyle]="{
+
+    'background-color': clickCounter >= 4 ? 'lightcyan' : 'lightseagreen',
+    'border':           clickCounter >= 4 ? '4px solid black' : 'none'
+   
+}">
+
+    <ng-template [ngIf]="clickCounter >= 4" [ngIfElse="none" ]>
+        <p>The click counter <strong>IS GREATER THAN 4 AND ALL IF ELSE TEST</strong> tainking You</p>
+    </ng-template>
+
+    <ng-template #none>
+        <p>The click counter is <strong>not greater</strong> than 4.</p>
+    </ng-template>
+
+
 
 </div>
