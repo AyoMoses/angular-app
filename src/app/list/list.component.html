@@ -1,1 +1,23 @@
-<p>list works!</p>
+<!-- DO NOT FORGET TO IMPORT BREWERY IN APP.MODULE -->
+
+<h1>BREWRIES LIST GOTTTEN FROM API</h1>
+
+<!-- THE *NGIF CHECKS IF THERE IS ANYTHING LIKE BREWS FROM API AND DISPLAYS IF NOT IT WON'T -->
+<ul *ngIf="brews">
+
+    <li *ngFor="let brew of brews"> <!--LOOPS OVER AND DISPLAYS-->
+        <p class="name"> <!--NAME IS GOTTEN FROM THE API BREWERY NAME-->
+            {{brew.name}}
+        </p>
+        <p class="city"> <!--NAME IS GOTTEN FROM THE API BREWERY NAME-->
+            {{brew.country}}
+        </p>
+        <p class="city"> <!--NAME IS GOTTEN FROM THE API BREWERY NAME-->
+            {{brew.city}}
+        </p>
+        <!--NAME IS GOTTEN FROM THE API BREWERY NAME-->
+        <a href="{{brew.website_url}}" class="site">visit site</a>
+        
+    </li>
+
+</ul>

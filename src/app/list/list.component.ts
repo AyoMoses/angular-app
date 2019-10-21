@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-list',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  // WE REFERENCE THE SERVICE (HTTP) THRU WHAT IS CALLED - DEPENDENCY INJECTION
+  constructor(private _myHttp: HttpService) { } 
+  //NOW WE CAN USE THE SERVICE DECLARED THRUOUT OUR COMPONENT LOGIC
 
-  constructor() { }
+  // WE CREATE AND OBJECT TO HLD OUR DATA FROM THE API
+  brews: Object;
 
-  ngOnInit() {
+  ngOnInit() { //any code in here runs once the component is loaded
+    this._myHttp.getBeer().subscribe(data => {
+      this.brews = data;
+      console.log(this.brews);
+    });
   }
 
 }
